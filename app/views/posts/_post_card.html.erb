@@ -1,0 +1,14 @@
+<!-- app/views/posts/_post_card.html.erb -->
+
+<div class="post-card">
+  <% if post.image_url.present? %>
+    <%= image_tag post.image_url, class: 'post-image' %>
+  <% else %>
+    <div class="image-placeholder">No Image</div>
+  <% end %>
+  <div class="post-info">
+    <h3><%= post.title %></h3>
+    <p><%= post.discription %></p>
+    <!-- Add more post info as needed -->
+  </div>
+</div>

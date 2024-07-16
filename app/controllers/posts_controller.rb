@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
-  before_action :set_user, except: [:all]
+  before_action :set_user, except: [:all, :index]
   before_action :set_post, only: [:show, :update, :destroy,]
 
   # GET /users/:user_id/posts
   def index
-  @posts = @user.posts
-  render json: @posts
- end
+    @posts = Post.all  #@user.posts
+    render json: @posts
+  end
 
- def all
+  def all
     @posts = Post.all
     render json: @posts
   end

@@ -4,4 +4,5 @@ class Post < ApplicationRecord
     validates :user_id, presence: true
     validates :user, presence: true 
 	belongs_to :user
+    validates :image_url, format: { with: /\Ahttps?:\/\/.*\.(png|jpg|jpeg|gif)\z/i }, allow_blank: true
 end
