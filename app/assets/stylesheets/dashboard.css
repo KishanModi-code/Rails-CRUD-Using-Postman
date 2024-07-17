@@ -1,0 +1,47 @@
+/* app/assets/stylesheets/dashboard.css.scss */
+/* Navbar styles */
+.navbar {
+  background-color: #f8f9fa; /* Light gray background */
+  border-bottom: 1px solid #dee2e6; /* Gray border bottom */
+  display: flex;
+}
+
+.navbar-brand img.logo-img {
+  height: 87px; /* Adjust the height of the logo */
+}
+
+.navbar-nav .nav-link {
+  color: #495057; /* Dark text color */
+  font-weight: bold;
+  margin-left: 25px; /* Adjust spacing between nav items */
+  display: flex;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Hover color */
+}
+
+/* Login button styles */
+.navbar .btn-login {
+  margin-left: auto; /* Push login button to the right */
+}
+
+/* Main content styles */
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-login{
+  height: 30px;
+  width: 100px;
+  margin-top: 28px;
+/*  margin-left: 300px;*/
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.btn-login:hover{
+  background-color: skyblue;
+}
+

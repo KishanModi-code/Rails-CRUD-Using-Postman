@@ -1,11 +1,83 @@
 <!-- app/views/posts/index.html.erb -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Posts List</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post List</title>
+  <style>
+    .post-table {
+       width: 100%;
+       border-collapse: collapse;
+       margin-top: 20px;
+      }
+    .post-table th, .post-table td {
+       border: 1px solid #ddd;
+       padding: 8px;
+      }
+    .post-table th {
+       background-color: #f2f2f2;
+       text-align: left;
+      }  
+    .post-image {
+       width: 100px; 
+       height: 100px;
+       border-radius: 5px;
+       object-fit: cover; 
+       background-color: maroon;
+      } 
+  </style>
 </head>
 <body>
-  <!-- Content specific to posts index -->
-  <%= render partial: 'posts/post_list', locals: { posts: @posts } %>
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Logo -->
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "https://w7.pngwing.com/pngs/502/794/png-transparent-white-arrow-going-up-computer-icons-dashboard-car-symbol-dashboard-icon-miscellaneous-angle-logo-thumbnail.png", alt: "Logo", class: "logo-img" %>
+      <% end %>
+      <!-- Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Users", users_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <!-- Login button --> 
+    </div>
+  </nav>
+</header>
+<h1>Posts List</h1>
+<table class="post-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Discription</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <% if post.image_url.present? %>
+            <%= image_tag post.image_url, class: 'post-image' %>
+          <% else %>
+            <%= image_tag 'https://png.pngtree.com/png-clipart/20220217/ourmid/pngtree-new-post-icon-giphy-instagram-png-image_4393115.png', class: 'post-image' %>
+          <% end %>
+        </td>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td><%= post.discription %></td>
+        <td>
+          <%= post.action %>
+        </td> 
+       </tr> 
+    <% end %>
+  </tbody>
+</table>
 </body>
 </html>
+
+
