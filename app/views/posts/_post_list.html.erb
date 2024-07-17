@@ -1,0 +1,9 @@
+<!-- app/views/posts/_post_list.html.erb -->
+
+<h1>Posts List</h1>
+
+<div class="posts-container">
+  <% @posts.each do |post| %>
+    <%= render partial: 'posts/post_card', locals: { post: post } %>
+  <% end %>
+</div>

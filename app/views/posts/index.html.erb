@@ -1,8 +1,11 @@
-<h1>Posts</h1>
-<% @posts.each do |post| %>
-  <div>
-    <%= image_tag(post.image_url, width: '200', height: '150') if post.image_url.present? %><br>
-    <h3><%= post.title %></h3>
-    <p><%= post.description %></p>
-  </div>
-<% end %>
+<!-- app/views/posts/index.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Posts List</title>
+</head>
+<body>
+  <!-- Content specific to posts index -->
+  <%= render partial: 'posts/post_list', locals: { posts: @posts } %>
+</body>
+</html>
