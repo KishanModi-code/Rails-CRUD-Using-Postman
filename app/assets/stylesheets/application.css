@@ -15,9 +15,8 @@
  */
 /* app/assets/stylesheets/application.scss */
 
-/* app/assets/stylesheets/application.scss */
-
 /* General styles */
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -63,44 +62,3 @@ body {
   background-color: #e0e0e0;
 }
 
-/* Users and Posts list styles */
-.users-container,
-.posts-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.user-card,
-.post-card {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  width: calc(50% - 20px);
-  margin-bottom: 20px;
-}
-
-.user-card .avatar,
-.post-card .post-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.user-card .user-info,
-.post-card .post-info {
-  margin-left: 15px;
-}
-
-.user-card h3,
-.post-card h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.user-card p,
-.post-card p {
-  color: #666;
-}

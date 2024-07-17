@@ -1,9 +1,0 @@
-<!-- app/views/users/_user_list.html.erb -->
-
-<h1>Users List</h1>
-
-<div class="users-container">
-  <% @users.each do |user| %>
-    <%= render partial: 'users/user_card', locals: { user: user } %>
-  <% end %>
-</div>

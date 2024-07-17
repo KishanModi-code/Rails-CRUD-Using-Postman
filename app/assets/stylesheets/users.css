@@ -1,0 +1,45 @@
+/* app/assets/stylesheets/users.css */
+/* app/assets/stylesheets/users.css */
+.navbar {
+  background-color: #f8f9fa; /* Light gray background */
+  border-bottom: 1px solid #dee2e6; /* Gray border bottom */
+  display: flex;
+}
+
+.navbar-brand img.logo-img {
+  height: 65px; /* Adjust the height of the logo */
+}
+
+.navbar-nav .nav-link {
+  color: #495057; /* Dark text color */
+  font-weight: bold;
+  margin-left: 20px;/* Adjust spacing between nav items */
+  margin-top: 10px;
+  display: flex;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff; /* Hover color */
+}
+
+/* Login button styles */
+.navbar .btn-login {
+  margin-left: auto; /* Push login button to the right */
+}
+
+/* Main content styles */
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.create-user-btn {
+  width: 100px;
+  height: 30px;
+  margin-top: 18px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: whitesmoke;
+}
+.create-user-btn:hover {
+  background-color: skyblue;
+}

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /users/:user_id/posts
   def index
     @posts = Post.all  #@user.posts
-    render json: @posts
+    # render json: @posts
   end
 
   def all
@@ -53,13 +53,13 @@ class PostsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
-  rescue ActiveRecord::RecordNotFound
+   rescue ActiveRecord::RecordNotFound
     render json: { error: "User with ID #{params[:user_id]} not found" }, status: :not_found
   end
 
   def set_post
     @post = Post.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
+   rescue ActiveRecord::RecordNotFound
     render json: { error: "Post with ID #{params[:id]} not found OR Alredy Deleted" }, status: :not_found
   end
 

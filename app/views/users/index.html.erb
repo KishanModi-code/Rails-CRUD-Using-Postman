@@ -1,0 +1,157 @@
+<!-- app/views/users/index.html.erb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    .user-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      margin-left: 80px;
+    }
+    .user-table th, .user-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    .user-table th {
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+    .avatar-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Logo -->
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "https://w7.pngwing.com/pngs/502/794/png-transparent-white-arrow-going-up-computer-icons-dashboard-car-symbol-dashboard-icon-miscellaneous-angle-logo-thumbnail.png", alt: "Logo", class: "logo-img" %>
+      <% end %>
+      <!-- Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Posts", posts_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <button class="create-user-btn">Create-User</button>
+    </div>
+  </nav>
+</header>
+
+<div id="createUserForm" style="display: none;">
+  <%= form_with(model: User.new, url: users_path, remote: true, id: "new_user_form") do |form| %>
+    <div class="form-group">
+      <%= form.label :firstname %>
+      <%= form.text_field :firstname, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :lastname %>
+      <%= form.text_field :lastname, class: "form-control", required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "form-control", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :mobilenumber %>
+      <%= form.text_field :mobilenumber, class: "form-control", required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Create User", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
+
+  <div class="container">
+  <h1>Users List</h1>
+  <div class="user-table">
+<table>
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>email</th>
+      <th>Mobile Number</th>
+      <th>User Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+            <% if user.avatar_url.present? %>
+              <%= image_tag user.avatar_url, class: 'avatar-img' %>
+            <% else %>
+              <%= image_tag 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png', class: 'avatar-img' %>
+            <% end %>
+        </td>
+        <td><%= user.id %></td>
+        <td><%= "#{user.firstname} #{user.lastname}" %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.mobilenumber %></td>  
+        <td>
+          <%= link_to "View", user_path(user), class: "btn btn-info btn-sm" %>
+          <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary btn-sm" %>
+          <%= link_to "Delete", user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+        </td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    $('.create-user-btn').on('click', function() {
+      $('#createUserForm').toggle();
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

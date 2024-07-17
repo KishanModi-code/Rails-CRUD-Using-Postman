@@ -2,9 +2,19 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    @user = User.new
     # render json: @users
+    #  if @users.empty?
+    #   head :no_content
+    # else
+    #   render json: @users
+    # end
+    respond_to do |format|
+    format.html { render :index } # This will render app/views/users/index.html.erb
+    # format.json { render json: @users }
+    end
   end
-  
+
   def show
     @user = User.find(params[:id])
     render json: @user
