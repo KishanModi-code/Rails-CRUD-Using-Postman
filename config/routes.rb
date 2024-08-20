@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :posts do
     end
   end 
-  resources :posts, only: [:index, :show, :create, :update, :destroy] do
+  resources :posts, only: [:index, :show, :create, :update, :destroy, :edit] do
     collection do
       get 'all', action: 'all'
     end

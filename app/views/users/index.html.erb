@@ -20,11 +20,23 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
     }
+    .container h1 {
+      margin-top: 0px;
+      margin-left: 0px;
+    }
+    #openUserFormButton {
+      width: 90px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: whitesmoke;
+      margin-left: auto;
+
+    }
     .user-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
-      margin-left: 80px;
+      margin-top: 50px;
+      margin-left: 60px;
     }
     .user-table th, .user-table td {
       border: 1px solid #ddd;
@@ -44,54 +56,15 @@
   </style>
 </head>
 <body>
-  <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <!-- Logo -->
-      <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "https://w7.pngwing.com/pngs/502/794/png-transparent-white-arrow-going-up-computer-icons-dashboard-car-symbol-dashboard-icon-miscellaneous-angle-logo-thumbnail.png", alt: "Logo", class: "logo-img" %>
-      <% end %>
-      <!-- Links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Posts", posts_path, class: "nav-link" %>
-        </li>
-      </ul>
-      <button class="create-user-btn">Create-User</button>
-    </div>
-  </nav>
-</header>
-
-<div id="createUserForm" style="display: none;">
-  <%= form_with(model: User.new, url: users_path, remote: true, id: "new_user_form") do |form| %>
-    <div class="form-group">
-      <%= form.label :firstname %>
-      <%= form.text_field :firstname, class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :lastname %>
-      <%= form.text_field :lastname, class: "form-control", required: false %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :email %>
-      <%= form.email_field :email, class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :mobilenumber %>
-      <%= form.text_field :mobilenumber, class: "form-control", required: false %>
-    </div>
-
-    <div class="form-group">
-      <%= form.submit "Create User", class: "btn btn-success" %>
-    </div>
+<!-- List of Users -->
+<div id="userList">
+  <% @users.each do |user| %>
+    <%= render 'user', user: user %>
   <% end %>
 </div>
-
   <div class="container">
   <h1>Users List</h1>
+  <%# <button id="openUserFormButton">Create User</button> %>
   <div class="user-table">
 <table>
   <thead>
@@ -99,11 +72,11 @@
       <th>Avatar</th>
       <th>ID</th>
       <th>Username</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
+      <%# <th>Firstname</th> %>
+      <%# <th>Lastname</th> %>
       <th>email</th>
       <th>Mobile Number</th>
-      <th>User Action</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -118,8 +91,6 @@
         </td>
         <td><%= user.id %></td>
         <td><%= "#{user.firstname} #{user.lastname}" %></td>
-        <td><%= user.firstname %></td>
-        <td><%= user.lastname %></td>
         <td><%= user.email %></td>
         <td><%= user.mobilenumber %></td>  
         <td>
@@ -134,11 +105,7 @@
 </div>
 </div>
 <script>
-  document.addEventListener('turbolinks:load', function() {
-    $('.create-user-btn').on('click', function() {
-      $('#createUserForm').toggle();
-    });
-  });
+
 </script>
 </body>
 </html>

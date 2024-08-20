@@ -1,0 +1,2 @@
+$('#userForm').toggle();  // Hide the form after submission
+$('#userList').html('<%= j render partial: 'user', collection: [@user], as: 'user' %>');  // Render new user in the list
